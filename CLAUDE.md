@@ -27,6 +27,8 @@ Immutable date library with a Moment.js-compatible API. The core bundle has a ha
 - Full tests: `TZ=UTC npm test`. It runs the tz suites in several zones, then all of Jest
   with a 100% line coverage threshold. Without `TZ=UTC`, `npm test` fails 6 tests on a
   US-timezone machine (dayOfYear, localizedFormat, timezone). CI runs in UTC.
+  It runs Jest 9 times, so `| tail` shows only the last run. Check the exit code instead:
+  `TZ=UTC npm test > /tmp/dayjs-test.log 2>&1; echo $?`
 - One test file: `TZ=UTC npx jest test/plugin/isToday.test.js --coverage=false`
 - Build: `NODE_OPTIONS=--openssl-legacy-provider npm run build`. The `size` step crashes on
   Node 17+ with `ERR_OSSL_EVP_UNSUPPORTED` without that flag. ESM: `npm run babel`.
